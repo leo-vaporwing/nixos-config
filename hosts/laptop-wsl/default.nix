@@ -10,6 +10,8 @@
 {
   imports = [
     # NixOS-WSL modules handled by flake
+
+    ../../modules/librespeed.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
