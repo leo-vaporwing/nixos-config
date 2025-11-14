@@ -12,6 +12,7 @@
     # NixOS-WSL modules handled by flake
 
     ../../modules/librespeed.nix
+    ../../modules/caddy.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
