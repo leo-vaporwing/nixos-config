@@ -8,9 +8,13 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, sops-nix, ... }@inputs: {
     nixosConfigurations = {
       laptop-wsl = let
         username = "leov";
@@ -34,6 +38,8 @@
               home-manager.extraSpecialArgs = inputs // specialArgs;
 	      home-manager.users.${username} = import ./users/${username}/home.nix;
 	    }
+
+            sops-nix.nixosModules.sops
           ];
         };
     };
