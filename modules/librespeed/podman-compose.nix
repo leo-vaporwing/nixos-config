@@ -77,6 +77,4 @@
     wantedBy = [ "multi-user.target" ];
   };
 
-  networking.firewall.allowedTCPPorts = [ 8081 ];
-  networking.firewall.allowedUDPPorts = [ 8081 ];
 }
