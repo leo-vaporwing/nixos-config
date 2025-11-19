@@ -12,6 +12,7 @@
     # NixOS-WSL modules handled by flake
 
     ../../modules/librespeed
+    ../../modules/foundryvtt
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -30,6 +31,8 @@
       neovim
     ];
   };
+  # sops-nix stuff
+  sops.age.keyFile = "/home/leov/.config/sops/age/keys.txt";
 
   networking.hostName = "laptop-wsl";
 

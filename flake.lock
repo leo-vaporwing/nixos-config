@@ -37,6 +37,22 @@
         "type": "github"
       }
     },
+    "nixos-secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1763589683,
+        "narHash": "sha256-46ev3TSxhJq1C2YjlB8wqPrUznDfvLNBH1rSzzz1U18=",
+        "owner": "leo-vaporwing",
+        "repo": "nixos-secrets",
+        "rev": "5ea3846faf0a62353f86d83e083cf46873a8f1e5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "leo-vaporwing",
+        "repo": "nixos-secrets",
+        "type": "github"
+      }
+    },
     "nixos-wsl": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -89,11 +105,28 @@
         "type": "github"
       }
     },
+    "quadlet-nix": {
+      "locked": {
+        "lastModified": 1763141753,
+        "narHash": "sha256-XAHkOkLEWbRQZ6t/SowwOukrUfIneNQOC/UEQlTaPBU=",
+        "owner": "SEIAROTg",
+        "repo": "quadlet-nix",
+        "rev": "211b5c626cf9ea91403b510e2ac5ca03a7194566",
+        "type": "github"
+      },
+      "original": {
+        "owner": "SEIAROTg",
+        "repo": "quadlet-nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "nixos-secrets": "nixos-secrets",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
+        "quadlet-nix": "quadlet-nix",
         "sops-nix": "sops-nix"
       }
     },

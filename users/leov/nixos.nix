@@ -1,5 +1,5 @@
 {
   users.users.leov = {
-    description = "Leo Vaporwing Updated";
+    description = "Leo Vaporwing";
   };
 }
