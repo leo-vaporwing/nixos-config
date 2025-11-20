@@ -54,6 +54,7 @@
           inherit specialArgs;
           modules = [
             ./hosts/rpi-400
+            sops-nix.nixosModules.sops
           ];
         };
     };
