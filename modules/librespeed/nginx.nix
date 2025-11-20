@@ -3,8 +3,8 @@
     ../nginx
   ];
   services.nginx.virtualHosts."speedtest.vaporwing.party" = {
-    enableACME = false;
-    forceSSL = false;
+    forceSSL = true;
+    useACMEHost = "vaporwing.party";
     locations."/" = {
       proxyPass = "http://127.0.0.1:8081";
       proxyWebsockets = false;
