@@ -5,7 +5,7 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 
-{ config, lib, pkgs, username, ... }:
+{ config, lib, pkgs, username, nixos-secrets, ... }:
 
 {
   imports = [
@@ -33,7 +33,8 @@
     ];
   };
   # sops-nix stuff
-  sops.age.keyFile = "/home/leov/.config/sops/age/keys.txt";
+  sops.age.keyFile = "/home/${username}/.config/sops/age/keys.txt";
+  sops.defaultSopsFile = "${builtins.toString nixos-secrets}/default.yaml";
 
   networking.hostName = "laptop-wsl";
 

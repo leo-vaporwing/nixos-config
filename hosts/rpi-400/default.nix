@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, username, ... }:
+{ config, lib, pkgs, username, nixos-secrets, ... }:
 
 {
   imports =
@@ -95,7 +95,8 @@
   # SOPS
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
   sops.age.keyFile = "/var/lib/sops-nix/key.txt";
-  sops.age.generateKey = true;  
+  sops.age.generateKey = true;
+  sops.defaultSopsFile = "${builtins.toString nixos-secrets}/default.yaml";
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
