@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ../../modules/ssh_server
       ../../modules/librespeed
+      ../../modules/foundryvtt
     ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
