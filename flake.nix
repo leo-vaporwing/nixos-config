@@ -46,6 +46,11 @@
             quadlet-nix.nixosModules.quadlet
           ];
         };
+      rpi-400 = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./hosts/rpi-400
+        ];
+      };
     };
   };
 }
