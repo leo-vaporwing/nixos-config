@@ -54,6 +54,7 @@
           inherit specialArgs;
           modules = [
             ./hosts/rpi-400
+            ./users/${username}/nixos.nix
             sops-nix.nixosModules.sops
             quadlet-nix.nixosModules.quadlet
           ];
