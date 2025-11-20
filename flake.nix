@@ -51,6 +51,7 @@
         specialArgs = {inherit username;};
       in
         nixpkgs.lib.nixosSystem {
+          inherit specialArgs;
           modules = [
             ./hosts/rpi-400
           ];

@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, username ... }:
+{ config, lib, pkgs, username, ... }:
 
 {
   imports =
@@ -16,7 +16,7 @@
   # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = true;
 
-  # networking.hostName = "rpi-400"; # Define your hostname.
+  networking.hostName = "rpi-400"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
@@ -121,4 +121,3 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }
-
