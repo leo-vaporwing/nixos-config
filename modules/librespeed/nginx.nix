@@ -1,4 +1,7 @@
 {
+  imports = [
+    ../nginx
+  ];
   services.nginx.virtualHosts."speedtest.vaporwing.party" = {
     enableACME = false;
     forceSSL = false;
