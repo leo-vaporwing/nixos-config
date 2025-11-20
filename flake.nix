@@ -46,11 +46,15 @@
             quadlet-nix.nixosModules.quadlet
           ];
         };
-      rpi-400 = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./hosts/rpi-400
-        ];
-      };
+      rpi-400 = let
+        username = "leov";
+        specialArgs = {inherit username;};
+      in
+        nixpkgs.lib.nixosSystem {
+          modules = [
+            ./hosts/rpi-400
+          ];
+        };
     };
   };
 }

@@ -2,12 +2,13 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, username ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../modules/ssh_server
     ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
@@ -15,7 +16,7 @@
   # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
+  # networking.hostName = "rpi-400"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
@@ -60,16 +61,14 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.leov = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       fastfetch
+      neovim
     ];
-    initialPassword = "changeMe";
   };
-
-  # programs.firefox.enable = true;
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -79,6 +78,7 @@
     git
     curl
   ];
+  environment.variables.EDITOR = "vim";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -89,17 +89,7 @@
   # };
 
   # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh = { 
-    enable = true;
-    settings = {
-      AllowAgentForwarding = true;
-    };
-  };
   
-  # security.pam.services.nixos-rebuild.sshAgentAuth.enable = true;
-  # security.pam.services.sudo.sshAgentAuth = true;
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
