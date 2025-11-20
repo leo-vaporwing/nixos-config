@@ -2,6 +2,7 @@
 
 {
   imports = [
-    ./podman-compose.nix
+    ./container.nix
+    ./nginx.nix
   ];
 }
