@@ -13,6 +13,7 @@
 
     ../../modules/librespeed
     ../../modules/foundryvtt
+    ../../modules/ssh_agent
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
