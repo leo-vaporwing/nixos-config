@@ -48,7 +48,7 @@
         };
       rpi-400 = let
         username = "leov";
-        specialArgs = {inherit username;};
+        specialArgs = { inherit username; inherit nixos-secrets; };
       in
         nixpkgs.lib.nixosSystem {
           inherit specialArgs;
