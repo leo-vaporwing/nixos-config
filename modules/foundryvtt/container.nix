@@ -1,0 +1,56 @@
+{ pkgs, lib, config, nixos-secrets, ... }:
+let
+  foundryUid = 3000;
+  foundryGid = 3000;
+  volumeMountRoot = "/var/lib/foundryvtt";
+  secretsPath = builtins.toString nixos-secrets;
+in
+{
+  users.users.foundry = {
+    isSystemUser = true;
+    linger = true;
+    group = "foundry";
+    uid = foundryUid;
+    autoSubUidGidRange = true;
+  };
+  users.groups.foundry = {
+    gid = foundryGid;
+  };
+  
+  systemd.tmpfiles.rules = [ 
+    "d ${volumeMountRoot}/data  0770 ${toString foundryUid} ${toString foundryGid} -"
+    "d ${volumeMountRoot}/cache 0750 ${toString foundryUid} ${toString foundryGid} -"
+  ];
+
+  sops.secrets."foundryvtt.env" = {
+    sopsFile = "${secretsPath}/foundryvtt.yaml";
+  };
+
+  virtualisation.quadlet.enable = true;
+
+  virtualisation.quadlet.containers.foundryvtt = {
+    autoStart = true;
+    serviceConfig = {
+      RestartSec = "10";
+      Restart = "always";
+    };
+    containerConfig = {
+      hostname = "foundryvtt";
+      image = "felddy/foundryvtt:13";
+      environments = {
+        "CONTAINER_CACHE" = "/cache";
+        "FOUNDRY_MINIFY_STATIC_FILES" = "true";
+        "FOUNDRY_TELEMETRY" = "true";
+      };
+      environmentFiles = [
+        config.sops.secrets."foundryvtt.env".path
+      ];
+      volumes = [
+        "${volumeMountRoot}/cache:/cache:rw"
+        "${volumeMountRoot}/data:/data:rw"
+      ];
+      publishPorts = [ "30000:30000" ];
+      user = "${toString foundryUid}:${toString foundryGid}";
+    };
+  };
+}
