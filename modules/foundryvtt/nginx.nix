@@ -3,16 +3,16 @@
     ../nginx
   ];
   services.nginx.virtualHosts."foundry.vaporwing.party" = {
-    enableACME = false;
-    forceSSL = false;
+    useACMEHost = "vaporwing.party";
+    forceSSL = true;
     locations."/" = {
       proxyPass = "http://127.0.0.1:30000";
-      proxyWebsockets = false;
+      proxyWebsockets = true;
       extraConfig =
-        "proxy_ssl_server_name on;" +
-        "proxy_pass_header Authorization;";
+        "# Set proxy headers" +
+        "proxy_set_header Host $host;" +
+        "proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;" +
+        "proxy_set_header X-Forwarded-Proto $scheme;";
     };
   };
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
-  networking.firewall.allowedUDPPorts = [ 80 443 ];
 }
