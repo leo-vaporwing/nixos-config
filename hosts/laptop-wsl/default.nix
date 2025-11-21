@@ -10,9 +10,6 @@
 {
   imports = [
     # NixOS-WSL modules handled by flake
-
-    ../../modules/librespeed
-    ../../modules/foundryvtt
     ../../modules/ssh_agent
   ];
 
