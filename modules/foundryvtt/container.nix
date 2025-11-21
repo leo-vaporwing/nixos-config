@@ -22,8 +22,13 @@ in
     "d ${volumeMountRoot}/cache 0750 ${toString foundryUid} ${toString foundryGid} -"
   ];
 
-  sops.secrets."foundryvtt.env" = {
-    sopsFile = "${secretsPath}/foundryvtt.yaml";
+  sops.secrets = {
+    "foundryvtt.env" = {
+      sopsFile = "${secretsPath}/foundryvtt.yaml";
+    };
+    "foundryvtt.r2.json" = {
+      sopsFile = "${secretsPath}/foundryvtt.yaml";
+    };
   };
 
   virtualisation.quadlet.enable = true;
@@ -41,6 +46,9 @@ in
         "CONTAINER_CACHE" = "/cache";
         "FOUNDRY_MINIFY_STATIC_FILES" = "true";
         "FOUNDRY_TELEMETRY" = "true";
+        "FOUNDRY_AWS_CONFIG" = "/secrets/r2.json";
+        "FOUNDRY_COMPRESS_WEBSOCKET" = "true";
+        "FOUNDRY_HOSTNAME" = "foundry.vaporwing.party";
       };
       environmentFiles = [
         config.sops.secrets."foundryvtt.env".path
@@ -48,6 +56,7 @@ in
       volumes = [
         "${volumeMountRoot}/cache:/cache:rw"
         "${volumeMountRoot}/data:/data:rw"
+        "${toString config.sops.secrets."foundryvtt.r2.json".path}:/secrets/r2.json:ro"
       ];
       publishPorts = [ "30000:30000" ];
       user = "${toString foundryUid}:${toString foundryGid}";
