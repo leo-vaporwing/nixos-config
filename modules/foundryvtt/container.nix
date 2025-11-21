@@ -28,6 +28,7 @@ in
     };
     "foundryvtt.r2.json" = {
       sopsFile = "${secretsPath}/foundryvtt.yaml";
+      owner = config.users.users.foundry.name;
     };
   };
 
