@@ -50,6 +50,7 @@ in
         "FOUNDRY_AWS_CONFIG" = "/secrets/r2.json";
         "FOUNDRY_COMPRESS_WEBSOCKET" = "true";
         "FOUNDRY_HOSTNAME" = "foundry.vaporwing.party";
+        "FOUNDRY_WORLD" = "kyra-is-super-cool";
       };
       environmentFiles = [
         config.sops.secrets."foundryvtt.env".path
