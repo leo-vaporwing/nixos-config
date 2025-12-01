@@ -40,11 +40,11 @@
     "nixos-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1764593545,
-        "narHash": "sha256-FtnjTus/BhDP5BYh2HmRZEjTfbBj2ctVuVcavary6ig=",
+        "lastModified": 1764600690,
+        "narHash": "sha256-7JlpWzgJF6WQHytz5uJXvRPjiwDgCp7/070Q05DEscw=",
         "owner": "leo-vaporwing",
         "repo": "nixos-secrets",
-        "rev": "8dc54f377ca65aa5ce5fc7ac40ac9a61219dda6c",
+        "rev": "5e07aeb131255435dc9c87d0d3a23f40708f9c9a",
         "type": "github"
       },
       "original": {
