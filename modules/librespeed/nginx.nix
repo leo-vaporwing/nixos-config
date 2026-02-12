@@ -10,7 +10,8 @@
       proxyWebsockets = false;
       extraConfig =
         "proxy_ssl_server_name on;" +
-        "proxy_pass_header Authorization;";
+        "proxy_pass_header Authorization;" +
+        "client_max_body_size 50M;";
     };
   };
 }
