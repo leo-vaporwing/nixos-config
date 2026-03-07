@@ -3,7 +3,7 @@
 {
   imports = [
     ./container.nix
-    ./speedtest-rust.nix
+    # ./speedtest-rust.nix
     ./nginx.nix
   ];
 }
