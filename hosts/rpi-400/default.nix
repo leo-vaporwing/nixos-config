@@ -81,6 +81,7 @@
     wget
     git
     curl
+    libarchive
   ];
   environment.variables.EDITOR = "vim";
 
