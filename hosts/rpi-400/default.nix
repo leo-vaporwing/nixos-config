@@ -13,6 +13,7 @@
       ../../modules/foundryvtt
       ../../modules/ols-couchdb
       ../../modules/cloudflared
+      ../../modules/newt
     ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
